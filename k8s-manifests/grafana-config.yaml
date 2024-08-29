@@ -1,0 +1,21 @@
+{
+  "dashboard":
+    {
+      "title": "Kubernetes Cluster Monitoring",
+      "panels":
+        [
+          {
+            "type": "graph",
+            "title": "Pod CPU Usage",
+            "targets":
+              [
+                {
+                  "expr": "sum(rate(container_cpu_usage_seconds_total[1m])) by (pod_name)",
+                  "legendFormat": "{{pod_name}}",
+                  "refId": "A",
+                },
+              ],
+          },
+        ],
+    },
+}
