@@ -1,0 +1,14 @@
+global:
+  resolve_timeout: 5m
+
+route:
+  group_by: ["alertname"]
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 12h
+  receiver: "self-heal"
+
+receivers:
+  - name: "self-heal"
+    webhook_configs:
+      - url: "http://self-healing-service/self_heal" # Webhook to trigger the self-healing script
